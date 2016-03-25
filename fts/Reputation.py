@@ -23,7 +23,17 @@ class TestReputation(BaseTestCase):
         )
 
     def test_can_see_his_level(self):
-        self.fail()
+        # Florence logs in.
+        self.login_as_admin()
+
+        # She hits the homepage.
+        self.get('/')
+
+        # She sees her level name and number.
+        self.assertEqual(
+            self.browser.find_element_by_id('id_level').text,
+            '1 (Beginner)',
+        )
 
     def test_can_see_user_reputation_score_in_admin_panel(self):
         self.fail()
