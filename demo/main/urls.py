@@ -1,13 +1,12 @@
 from django.conf.urls import url
 
-from main import views
+from . import views
 
 
 urlpatterns = [
     url(
         r'^$',
-        views.dummy,
-        name='dummy'
+        views.homepage,
+        name='homepage'
     ),
 ]
-
