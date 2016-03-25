@@ -9,5 +9,21 @@
 			"is_superuser": true, 
 			"is_staff": true
 		}
+	},
+    {
+		"model": "repsystem.level",
+		"pk": 1,
+		"fields": {
+			"name": "Beginner",
+            "required_rep": 0
+		}
+	},
+    {
+		"model": "repsystem.level",
+		"pk": 2,
+		"fields": {
+			"name": "Master",
+            "required_rep": 100
+		}
 	}
 ]
