@@ -36,5 +36,14 @@
 			"name": "Master",
             "required_rep": 100
 		}
+	},
+    {
+		"model": "repsystem.action",
+		"pk": 1,
+		"fields": {
+			"name": "article_published",
+            "message": "Publishing a new article",
+            "value": 10
+		}
 	}
 ]
