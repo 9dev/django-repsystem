@@ -8,6 +8,10 @@ from repsystem.models import Reputation
 USER_MODEL = get_user_model()
 
 
+class ReputationAdmin(admin.ModelAdmin):
+    list_display = ('user', 'score', 'level')
+
+
 class ReputationInline(admin.StackedInline):
     model = Reputation
     can_delete = False
@@ -34,3 +38,5 @@ class ExtendedUserAdmin(UserAdmin):
 
 admin.site.unregister(USER_MODEL)
 admin.site.register(USER_MODEL, ExtendedUserAdmin)
+
+admin.site.register(Reputation, ReputationAdmin)

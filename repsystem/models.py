@@ -10,7 +10,7 @@ class Level(models.Model):
     required_rep = models.IntegerField(unique=True)
 
     def __str__(self):
-        return str(self.id)
+        return '{} ({})'.format(self.id, self.name)
 
 
 class Reputation(models.Model):
