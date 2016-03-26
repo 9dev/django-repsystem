@@ -1,3 +1,31 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth import get_user_model
 
-# Register your models here.
+from repsystem.models import Reputation
+
+
+USER_MODEL = get_user_model()
+
+
+class ReputationInline(admin.StackedInline):
+    model = Reputation
+    can_delete = False
+    verbose_name_plural = 'reputation'
+
+
+class ExtendedUserAdmin(UserAdmin):
+    inlines = UserAdmin.inlines + [ReputationInline]
+    list_display = UserAdmin.list_display + ('get_score', )
+
+    def get_queryset(self, request):
+        return super(ExtendedUserAdmin, self).get_queryset(request).select_related('reputation')
+
+    def get_score(self, obj):
+        return str(obj.reputation.score)
+    get_score.short_description = 'Reputation'
+    get_score.admin_order_field = 'reputation__score'
+
+
+admin.site.unregister(USER_MODEL)
+admin.site.register(USER_MODEL, ExtendedUserAdmin)
