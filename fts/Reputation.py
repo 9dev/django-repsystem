@@ -9,6 +9,12 @@ class TestReputation(BaseTestCase):
         super(TestReputation, self).setUp()
         self.florence = User.objects.get(pk=1)
 
+    def publish_article(self):
+        self.get('/create')
+        self.set_field('id_title', 'Some title')
+        self.set_field('id_content', 'Some content')
+        self.submit()
+
     def test_can_see_his_reputation_score(self):
         # Florence logs in.
         self.login_as_admin()
@@ -62,10 +68,7 @@ class TestReputation(BaseTestCase):
         )
 
         # She performs an action to get some reputation points.
-        self.get('/create')
-        self.set_field('id_title', 'Some title')
-        self.set_field('id_content', 'Some content')
-        self.submit()
+        self.publish_article()
 
         # She goes back to Reputation admin panel.
         self.get('/admin/repsystem/reputation')
@@ -77,7 +80,22 @@ class TestReputation(BaseTestCase):
         )
 
     def test_can_level_up(self):
-        self.fail()
+        # Florence has almost reached the next level.
+        reputation = self.florence.reputation
+        reputation.score = 95
+        reputation.save()
+
+        # She logs in as an admin.
+        self.login_as_admin()
+
+        # She performs an action to gain some reputation points.
+        self.publish_article()
+
+        # She notices she just leveled up.
+        self.assertEqual(
+            self.browser.find_element_by_id('id_level').text,
+            '2 (Master)',
+        )
 
     def test_can_see_his_reputation_history(self):
         self.fail()
