@@ -11,6 +11,14 @@
 		}
 	},
     {
+		"model": "repsystem.reputation",
+		"pk": 1,
+		"fields": {
+			"score": 0,
+            "user": 1
+		}
+	},
+    {
 		"model": "repsystem.level",
 		"pk": 1,
 		"fields": {
