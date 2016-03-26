@@ -15,7 +15,7 @@ Firstly, you should define actions that are going to be rewarded with reputation
 
 It's recommended to create them via a fixture. For example:
 
-    ```
+    
     # file my_fixture.json
     
     [
@@ -46,7 +46,6 @@ It's recommended to create them via a fixture. For example:
             }
         }
     ]
-    ```
 
 ### Admin panel access
 
