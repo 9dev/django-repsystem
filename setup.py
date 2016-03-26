@@ -14,9 +14,9 @@ setup(
     packages=['repsystem'],
     include_package_data=True,
     license='MIT License',
-    description='...',
+    description='Simple reputation system for Django.',
     long_description=README,
-    url='...',
+    url='https://github.com/9dev/django-repsystem',
     author='9dev',
     author_email='9devmail@gmail.com',
     classifiers=[
