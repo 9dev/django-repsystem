@@ -23,6 +23,6 @@ class Reputation(models.Model):
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
-def post_delete_ban(sender, instance, created, **kwargs):
+def post_save_user(sender, instance, created, **kwargs):
     if created:
         Reputation.objects.create(user=instance)
