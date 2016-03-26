@@ -35,21 +35,18 @@ class TestReputation(BaseTestCase):
             '1 (Beginner)',
         )
 
-    def test_can_see_user_reputation_score_in_admin_panel(self):
+    def test_can_see_user_reputation_score_and_level_in_admin_panel(self):
         # Florence logs in as an admin.
         self.login_as_admin()
 
         # She hits admin panel for User objects.
         self.get('/admin/auth/user')
 
-        # She sees a row for her User object along with her reputation score.
+        # She sees a row for her User object along with her reputation score and level.
         self.assertEqual(
             self.browser.find_element_by_class_name('row1').text,
-            'admin admin@example.com Florence Jones 0',
+            'admin admin@example.com Florence Jones 0 1 (Beginner)',
         )
-
-    def test_can_see_user_level_in_admin_panel(self):
-        self.fail()
 
     def test_can_gain_reputation_for_performing_actions(self):
         self.fail()
