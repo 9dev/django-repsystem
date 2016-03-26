@@ -52,6 +52,11 @@ def testall():
         local('rm -f {}/.coverage*'.format(DEMO_PATH))
 
 
+def shell():
+    with _venv_local():
+        _django_local('shell')
+
+
 def _django_local(command):
     return local(
         'python {}/manage.py {}'.format(DEMO_PATH, command)
