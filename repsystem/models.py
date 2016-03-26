@@ -27,6 +27,9 @@ class Action(models.Model):
     message = models.CharField(max_length=1000)
     value = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
 
 class History(models.Model):
     action = models.ForeignKey(Action)

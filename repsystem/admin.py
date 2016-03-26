@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth import get_user_model
 
-from repsystem.models import Reputation
+from repsystem.models import Action, History, Level, Reputation
 
 
 USER_MODEL = get_user_model()
@@ -10,6 +10,18 @@ USER_MODEL = get_user_model()
 
 class ReputationAdmin(admin.ModelAdmin):
     list_display = ('user', 'score', 'level')
+
+
+class LevelAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'required_rep')
+
+
+class ActionAdmin(admin.ModelAdmin):
+    list_display = ('name', 'value', 'message')
+
+
+class HistoryAdmin(admin.ModelAdmin):
+    list_display = ('user', 'action', 'creation_date')
 
 
 class ReputationInline(admin.StackedInline):
@@ -40,3 +52,6 @@ admin.site.unregister(USER_MODEL)
 admin.site.register(USER_MODEL, ExtendedUserAdmin)
 
 admin.site.register(Reputation, ReputationAdmin)
+admin.site.register(Action, ActionAdmin)
+admin.site.register(Level, LevelAdmin)
+admin.site.register(History, HistoryAdmin)
