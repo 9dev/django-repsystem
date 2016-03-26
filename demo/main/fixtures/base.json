@@ -1,4 +1,28 @@
 [
+    {
+		"model": "repsystem.level",
+		"pk": 1,
+		"fields": {
+			"name": "Beginner",
+            "required_rep": 0
+		}
+	},
+    {
+		"model": "repsystem.level",
+		"pk": 2,
+		"fields": {
+			"name": "Master",
+            "required_rep": 100
+		}
+	},
+    {
+		"model": "repsystem.level",
+		"pk": 3,
+		"fields": {
+			"name": "Super-master",
+            "required_rep": 1000
+		}
+	},
 	{
 		"model": "auth.user",
 		"pk": 1,
@@ -19,22 +43,6 @@
 		"fields": {
 			"score": 0,
             "user": 1
-		}
-	},
-    {
-		"model": "repsystem.level",
-		"pk": 1,
-		"fields": {
-			"name": "Beginner",
-            "required_rep": 0
-		}
-	},
-    {
-		"model": "repsystem.level",
-		"pk": 2,
-		"fields": {
-			"name": "Master",
-            "required_rep": 100
 		}
 	},
     {
