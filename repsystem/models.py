@@ -28,6 +28,12 @@ class Action(models.Model):
     value = models.IntegerField()
 
 
+class History(models.Model):
+    action = models.ForeignKey(Action)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    creation_date = models.DateTimeField(auto_now_add=True)
+
+
 @receiver(post_save, sender=Reputation)
 def post_save_reputation(sender, instance, created, **kwargs):
     if not created:
