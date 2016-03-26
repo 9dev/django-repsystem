@@ -98,4 +98,27 @@ class TestReputation(BaseTestCase):
         )
 
     def test_can_see_his_reputation_history(self):
-        self.fail()
+        # She logs in as an admin.
+        self.login_as_admin()
+
+        # She performs several actions to gain some reputation points.
+        self.publish_article()
+        self.publish_article()
+        self.publish_article()
+
+        # She hits her reputation history page.
+        self.get('/reputation_history')
+
+        # She sees all her actions.
+        self.assertIn(
+            'You got 10 reputation points for: Publishing a new article.',
+            self.browser.find_element_by_id('id_log_1').text
+        )
+        self.assertIn(
+            'You got 10 reputation points for: Publishing a new article.',
+            self.browser.find_element_by_id('id_log_2').text
+        )
+        self.assertIn(
+            'You got 10 reputation points for: Publishing a new article.',
+            self.browser.find_element_by_id('id_log_3').text
+        )

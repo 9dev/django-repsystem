@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Your reputation change history</h1>
+    {% for item in history %}
+        <p>
+            [{{ item.creation_date }}]
+            <span id="id_log_{{ forloop.counter }}">
+                You got <strong>{{ item.action.value }}</strong>
+                reputation points for: {{ item.action.message }}.
+            </span>
+        </p>
+    {% endfor %}
+{% endblock content %}

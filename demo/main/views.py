@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, TemplateView
 
-from repsystem.utils import perform_action
+from repsystem.utils import perform_action, get_user_history
 
 from .models import Article
 
@@ -21,3 +21,12 @@ class ArticleCreateView(CreateView):
 
 class ArticleDetailView(DetailView):
     model = Article
+
+
+class ReputationHistoryView(TemplateView):
+    template_name = 'main/reputation_history.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ReputationHistoryView, self).get_context_data(**kwargs)
+        context['history'] = get_user_history(self.request.user)
+        return context

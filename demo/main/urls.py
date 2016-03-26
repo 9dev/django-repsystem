@@ -19,4 +19,9 @@ urlpatterns = [
         views.ArticleDetailView.as_view(),
         name='article_detail'
     ),
+    url(
+        r'^reputation_history$',
+        views.ReputationHistoryView.as_view(),
+        name='reputation_history'
+    ),
 ]
