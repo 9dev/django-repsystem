@@ -9,4 +9,14 @@ urlpatterns = [
         views.homepage,
         name='homepage'
     ),
+    url(
+        r'^create$',
+        views.ArticleCreateView.as_view(),
+        name='article_create'
+    ),
+    url(
+        r'^article/(?P<pk>[0-9]+)',
+        views.ArticleDetailView.as_view(),
+        name='article_detail'
+    ),
 ]
