@@ -22,6 +22,12 @@ class Reputation(models.Model):
         return str(self.score)
 
 
+class Action(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    message = models.CharField(max_length=1000)
+    value = models.IntegerField()
+
+
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def post_save_user(sender, instance, created, **kwargs):
     if created:
