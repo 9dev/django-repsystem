@@ -44,8 +44,8 @@ class ExtendedUserAdmin(UserAdmin):
 
     def get_level(self, obj):
         return '{} ({})'.format(obj.reputation.level.id, obj.reputation.level.name)
-    get_score.short_description = 'Level'
-    get_score.admin_order_field = 'reputation__level'
+    get_level.short_description = 'Level'
+    get_level.admin_order_field = 'reputation__level'
 
 
 admin.site.unregister(USER_MODEL)
